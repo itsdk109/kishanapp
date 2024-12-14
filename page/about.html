@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishan App - Farmers' Dashboard</title>
+
+    <!-- Description for SEO -->
+    <meta name="description"
+        content="Kishan App - A dashboard for farmers to access real-time crop prices, weather updates, and flood alerts. Empowering farmers with information.">
+
+    <!-- Keywords for SEO -->
+    <meta name="keywords"
+        content="Kishan App, Farmers Dashboard, Crop Prices, Weather Updates, Flood Alerts, Agriculture, Farmer's Tools">
+
+    <!-- Author -->
+    <meta name="author" content="Kishan App Team">
+
+    <!-- Social Media Metadata -->
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Kishan App - Farmers' Dashboard">
+    <meta property="og:description"
+        content="Stay updated with real-time crop prices, weather alerts, and flood information with Kishan App. Empowering farmers with reliable insights.">
+    <meta property="og:image" content="./images/social-preview.png">
+    <!-- Replace with your social media preview image -->
+    <meta property="og:url" content="https://kishanapp.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kishan App - Farmers' Dashboard">
+    <meta name="twitter:description"
+        content="Stay updated with real-time crop prices, weather alerts, and flood information with Kishan App.">
+    <meta name="twitter:image" content="./images/social-preview.png">
+
+    <title>kishanapp.com</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../images/icon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Ensure footer stays at the bottom */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        /* Logo image styling */
+        .logo {
+            width: 80px;
+            height: auto;
+            border-radius: 50%;
+            /* Makes the logo circular */
+            border: 2px solid white;
+            /* Adds a white border for better contrast */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-green-700 text-white px-4 py-3 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo and App Name -->
+            <div class="flex items-center space-x-3">
+                <img src="./images/logo.png" alt="Kishan App Logo" class="logo">
+                <h1 class="text-xl font-bold nav-title">Kishan App</h1>
+            </div>
+            <ul class="flex space-x-4">
+                <li><a href="#home" class="hover:text-yellow-300">Home</a></li>
+                <li><a href="/page/about.html" class="hover:text-yellow-300">About-US</a></li>
+                <li><a href="#weatherInfo" class="hover:text-yellow-300">Weather</a></li>
+                <li><a href="#floodAlerts" class="hover:text-yellow-300">Flood Alerts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-4">
+        <!-- Welcome Section -->
+        <section id="home" class="bg-white shadow-md p-4 rounded-lg mb-4">
+            <h2 class="text-2xl font-bold text-green-700">Welcome, Farmers!</h2>
+            <p class="mt-2 text-gray-600">
+                Access real-time information on crop prices, weather updates, and flood alerts to make informed
+                decisions. Stay safe and stay updated!<br> फसल की कीमतों, मौसम अपडेट और बाढ़ अलर्ट पर वास्तविक समय की
+                जानकारी प्राप्त करें ताकि सूचित निर्णय लिया जा सके। सुरक्षित रहें और अपडेट रहें!
+            </p>
+        </section>
+
+        <section id="about" class="bg-white shadow-md p-4 rounded-lg mb-4">
+            <h2 class="text-2xl font-bold text-green-700">Why We Provide Weather Forecasts, Weather Alerts, Flood Alerts, and Crop Prices</h2>
+            <p class="mt-2 text-gray-600">
+                At <strong>Kishan App</strong>, we understand that weather plays a crucial role in farming, and staying ahead of weather-related challenges can make a significant difference in a farmer's productivity and safety. In addition to weather-related services, we also offer real-time crop price data, which is essential for farmers to make informed selling decisions. Here’s why we provide these services:
+                <br>
+                <strong>Kishan App</strong> पर, हम समझते हैं कि मौसम खेती में महत्वपूर्ण भूमिका निभाता है, और मौसम से संबंधित चुनौतियों से पहले से अवगत रहना किसानों की उत्पादकता और सुरक्षा में महत्वपूर्ण फर्क डाल सकता है। मौसम से संबंधित सेवाओं के अतिरिक्त, हम वास्तविक समय में फसल मूल्य डेटा भी प्रदान करते हैं, जो किसानों के लिए बिक्री के फैसले लेने में महत्वपूर्ण है। यही कारण है कि हम इन सेवाओं को प्रदान करते हैं:
+            </p>
+        
+            <h3 class="mt-4 text-xl font-semibold text-blue-600">1. Weather Forecasts</h3>
+            <p class="mt-2 text-gray-600">
+                Farmers rely on accurate weather information to plan their daily activities, such as sowing, irrigation, and harvesting. By providing weather forecasts, we enable farmers to make informed decisions about when to plant or harvest their crops, reducing losses due to unexpected weather conditions.
+                <br>
+                किसान सटीक मौसम जानकारी पर निर्भर करते हैं ताकि वे अपनी दैनिक गतिविधियाँ जैसे बुआई, सिंचाई और कटाई की योजना बना सकें। मौसम पूर्वानुमान प्रदान करके, हम किसानों को यह निर्णय लेने में सक्षम बनाते हैं कि उन्हें अपनी फसलों को कब बोना या काटना चाहिए, जिससे अप्रत्याशित मौसम परिस्थितियों के कारण होने वाली हानि को कम किया जा सकता है।
+            </p>
+        
+            <h3 class="mt-4 text-xl font-semibold text-blue-600">2. Weather Alerts</h3>
+            <p class="mt-2 text-gray-600">
+                Extreme weather events, such as storms or temperature changes, can pose serious risks to crops and livestock. Our weather alerts keep farmers informed about any potential weather disturbances, helping them take preventive measures to protect their livelihoods. Whether it’s a sudden frost or a heatwave, early warning can save crops and reduce damage.
+                <br>
+                चरम मौसम घटनाएँ, जैसे तूफान या तापमान में बदलाव, फसलों और पशुधन के लिए गंभीर जोखिम उत्पन्न कर सकती हैं। हमारे मौसम अलर्ट किसानों को संभावित मौसम परिवर्तनों के बारे में सूचित रखते हैं, जिससे वे अपनी आजीविका की सुरक्षा के लिए पूर्व-निवारक उपाय कर सकें। चाहे वह अचानक हुई ठंड या लू हो, पूर्व चेतावनी से फसलों की रक्षा की जा सकती है और नुकसान कम किया जा सकता है।
+            </p>
+        
+            <h3 class="mt-4 text-xl font-semibold text-blue-600">3. Flood Alerts</h3>
+            <p class="mt-2 text-gray-600">
+                Flooding can devastate entire regions, destroying crops and affecting farm infrastructure. With flood alerts, farmers can prepare in advance by taking steps to safeguard their crops, equipment, and livestock. By alerting farmers about the risk of floods, we aim to help them avoid devastating losses and plan for recovery.
+                <br>
+                बाढ़ पूरे क्षेत्रों को तबाह कर सकती है, फसलों को नष्ट कर सकती है और कृषि ढांचे को प्रभावित कर सकती है। बाढ़ अलर्ट के साथ, किसान अपने फसलों, उपकरणों और पशुधन की सुरक्षा के लिए पूर्व-निवारक कदम उठा सकते हैं। बाढ़ के खतरे के बारे में किसानों को सूचित करके, हमारा उद्देश्य उन्हें विनाशकारी नुकसान से बचने और पुनः बहाली के लिए योजना बनाने में मदद करना है।
+            </p>
+        
+            <h3 class="mt-4 text-xl font-semibold text-blue-600">4. State-wise Crop Prices</h3>
+            <p class="mt-2 text-gray-600">
+                In addition to weather-related services, <strong>Kishan App</strong> offers state-specific crop price data. We understand that crop prices can vary significantly depending on the region, and having access to accurate price information is vital for farmers when deciding when and where to sell their crops. By providing crop prices state-wise, we empower farmers to get the best possible value for their produce, improving their earnings and reducing uncertainty.
+                <br>
+                मौसम से संबंधित सेवाओं के अतिरिक्त, <strong>Kishan App</strong> राज्य-विशिष्ट फसल मूल्य डेटा प्रदान करता है। हम समझते हैं कि फसल के मूल्य क्षेत्र के आधार पर काफी भिन्न हो सकते हैं, और सही मूल्य जानकारी तक पहुँच होना किसानों के लिए महत्वपूर्ण है जब वे अपनी फसलों को कब और कहां बेचना है यह निर्णय लेते हैं। राज्य-विशेष फसल मूल्य प्रदान करके, हम किसानों को उनके उत्पादन के लिए सर्वोत्तम संभव मूल्य प्राप्त करने में सक्षम बनाते हैं, जिससे उनकी आय में सुधार और अनिश्चितता को कम किया जा सकता है।
+            </p>
+        
+            <p class="mt-4 text-gray-600">
+                Our mission is to empower farmers with the right tools and knowledge so they can make timely and effective decisions, resulting in better yields, improved safety, and increased profitability.
+                <br>
+                हमारा मिशन किसानों को सही उपकरणों और ज्ञान के साथ सशक्त बनाना है ताकि वे समय पर और प्रभावी निर्णय ले सकें, जिसके परिणामस्वरूप बेहतर पैदावार, सुरक्षा में सुधार और लाभ में वृद्धि हो।
+            </p>
+        </section>
+         
+
+    <!-- Footer -->
+    <footer class="bg-green-700 text-white text-center py-4">
+        <p>&copy; 2024 Kishan App. All Rights Reserved.</p>
+    </footer>
+
+    <script src="../javascript/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Ensures the body takes up at least the full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7fafc; /* Light background for better contrast */
+    color: #333; /* General text color */
+}
+
+/* Navbar Styles */
+nav {
+    background-color: #2f855a; /* Green shade for navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.nav-title {
+    font-size: 2.25rem;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    transition: color 0.3s ease;
+    font-weight: 800;
+}
+
+nav a:hover {
+    color: #f6e05e; /* Yellow on hover */
+}
+
+/* Section Headers */
+h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.25rem;
+    color: #2d3748; /* Darker text for headers */
+    margin-bottom: 0.75rem;
+}
+
+/* Input Fields */
+input[type="text"] {
+    width: 100%;
+    border: 1px solid #cbd5e0; /* Light gray border */
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #4caf50; /* Green border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(72, 187, 120, 0.5);
+}
+
+/* State Select Styling */
+#stateSelect {
+    width: 70%; /* Ensure the dropdown takes up 70% width of its container */
+    margin: 1rem 0; /* Vertical margin for spacing */
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0; /* Light gray border */
+    border-radius: 0.25rem;
+    background-color: #fff;
+    font-size: 1rem;
+    display: block; /* Ensures it behaves like a block element */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus Effect for State Select */
+#stateSelect:focus {
+    border-color: #4caf50; /* Green border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(72, 187, 120, 0.5);
+}
+
+/* Dropdown Option Styling */
+option {
+    font-size: 1rem;
+}
+
+/* Cards (Sections like Crop Prices, Weather, Flood Alerts) */
+section {
+    border-radius: 0.5rem;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+section:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Elevated effect on hover */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Crop Prices Section */
+#cropPricesData div {
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0; /* Light border for separation */
+}
+
+#cropPricesData div:last-child {
+    border-bottom: none; /* Remove border for the last item */
+}
+
+#cropPricesData span {
+    font-size: 1rem;
+}
+
+#cropPricesData span:first-child {
+    font-weight: bold;
+    color: #2d3748; /* Dark text for crop name */
+}
+
+#cropPricesData span:last-child {
+    color: #28a745; /* Green for price */
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #2f855a; /* Match navbar color */
+    font-size: 0.875rem; /* Smaller text */
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin-top: auto; /* Pushes the footer to the bottom if content is shorter than the viewport */
+}
+
+/* Weather Alerts Styling */
+#weatherAlertDetails div {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e2e8f0; /* Light gray border */
+}
+
+#weatherAlertDetails div:last-child {
+    border-bottom: none;
+}
+
+#weatherAlertDetails .font-bold {
+    color: #e53e3e; /* Red for alert headings */
+}
+
+#weatherAlertDetails p {
+    margin: 0.25rem 0;
+    font-size: 0.875rem;
+    color: #4a5568; /* Gray for timestamps */
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+
+    input[type="text"] {
+        font-size: 1rem;
+    }
+
+    /* Adjust state select dropdown to 90% width on smaller screens */
+    #stateSelect {
+        width: 90%;
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.p-4 {
+    padding: 1rem;
+}

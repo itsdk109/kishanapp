@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishan App - Farmers' Dashboard</title>
+
+    <!-- Description for SEO -->
+    <meta name="description"
+        content="Kishan App - A dashboard for farmers to access real-time crop prices, weather updates, and flood alerts. Empowering farmers with information.">
+
+    <!-- Keywords for SEO -->
+    <meta name="keywords"
+        content="Kishan App, Farmers Dashboard, Crop Prices, Weather Updates, Flood Alerts, Agriculture, Farmer's Tools">
+
+    <!-- Author -->
+    <meta name="author" content="Kishan App Team">
+
+    <!-- Social Media Metadata -->
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Kishan App - Farmers' Dashboard">
+    <meta property="og:description"
+        content="Stay updated with real-time crop prices, weather alerts, and flood information with Kishan App. Empowering farmers with reliable insights.">
+    <meta property="og:image" content="./images/social-preview.png">
+    <!-- Replace with your social media preview image -->
+    <meta property="og:url" content="https://kishanapp.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kishan App - Farmers' Dashboard">
+    <meta name="twitter:description"
+        content="Stay updated with real-time crop prices, weather alerts, and flood information with Kishan App.">
+    <meta name="twitter:image" content="./images/social-preview.png">
+
+    <title>kishanapp.com</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="./images/icon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Ensure footer stays at the bottom */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        /* Logo image styling */
+        .logo {
+            width: 80px;
+            height: auto;
+            border-radius: 50%;
+            /* Makes the logo circular */
+            border: 2px solid white;
+            /* Adds a white border for better contrast */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-green-700 text-white px-4 py-3 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo and App Name -->
+            <div class="flex items-center space-x-3">
+                <img src="./images/logo.png" alt="Kishan App Logo" class="logo">
+                <h1 class="text-xl font-bold nav-title">Kishan App</h1>
+            </div>
+            <ul class="flex space-x-4">
+                <li><a href="#home" class="hover:text-yellow-300">Home</a></li>
+                <li><a href="./page/about.html" class="hover:text-yellow-300">About-US</a></li>
+                <li><a href="#weatherInfo" class="hover:text-yellow-300">Weather</a></li>
+                <li><a href="#floodAlerts" class="hover:text-yellow-300">Flood Alerts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-4">
+        <!-- Welcome Section -->
+        <section id="home" class="bg-white shadow-md p-4 rounded-lg mb-4">
+            <h2 class="text-2xl font-bold text-green-700">Welcome, Farmers!</h2>
+            <p class="mt-2 text-gray-600">
+                Access real-time information on crop prices, weather updates, and flood alerts to make informed
+                decisions. Stay safe and stay updated!<br> फसल की कीमतों, मौसम अपडेट और बाढ़ अलर्ट पर वास्तविक समय की
+                जानकारी प्राप्त करें ताकि सूचित निर्णय लिया जा सके। सुरक्षित रहें और अपडेट रहें!
+            </p>
+        </section>
+
+        <!-- Dashboard Sections -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+            <!-- Crop Prices Section -->
+            <section id="cropPrices" class="bg-white shadow-md p-4 rounded-lg mt-4">
+
+                <!-- State Selection Dropdown -->
+                <section id="stateSelection" class="bg-white shadow-md p-4 rounded-lg">
+                    <h2 class="text-lg font-bold text-blue-600">
+                        Select State for Crop Prices.<br>फसल मूल्य के लिए राज्य का चयन करें।
+                    </h2>
+                    <select id="stateSelect" class="mt-4 p-2 border border-gray-300 rounded">
+                        <!-- Add only states with crop data -->
+                        <option value="Bihar">बिहार (Bihar)</option>
+                        <option value="Maharashtra">महाराष्ट्र (Maharashtra)</option>
+                        <option value="Punjab">पंजाब (Punjab)</option>
+                        <option value="Uttar Pradesh">उत्तर प्रदेश (Uttar Pradesh)</option>
+                        <option value="Tamil Nadu">तमिलनाडु (Tamil Nadu)</option>
+                        <option value="Andhra Pradesh">आंध्र प्रदेश (Andhra Pradesh)</option>
+                        <option value="Karnataka">कर्नाटका (Karnataka)</option>
+                        <option value="West Bengal">पश्चिम बंगाल (West Bengal)</option>
+                        <option value="Rajasthan">राजस्थान (Rajasthan)</option>
+                        <option value="Haryana">हरियाणा (Haryana)</option>
+                        <option value="Assam">असम (Assam)</option>
+                        <option value="Odisha">उड़ीसा (Odisha)</option>
+                        <option value="Chhattisgarh">छत्तीसगढ़ (Chhattisgarh)</option>
+                        <option value="Uttarakhand">उत्तराखंड (Uttarakhand)</option>
+                        <option value="Madhya Pradesh">मध्य प्रदेश (Madhya Pradesh)</option>
+                        <option value="Gujarat">गुजरात (Gujarat)</option>
+                    </select>
+                </section>
+
+                <!-- Search box to filter crops -->
+                <input type="text" id="cropSearch" placeholder="Search crop..."
+                    class="mt-4 p-2 border border-gray-300 rounded w-full mb-4">
+
+                <!-- Area where crop prices will be shown -->
+                <div id="cropPricesData">
+                    <!-- Crop prices will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Weather Forecast Section -->
+            <section id="weatherForecast" class="bg-white shadow-md p-4 rounded-lg">
+                <h2 class="text-lg font-bold text-blue-600">Weather Forecast</h2>
+                <canvas id="weatherChart" width="400" height="200"></canvas>
+                <div id="weatherDetails" class="mt-4 text-gray-700">
+                    <!-- Weather details will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <!-- Weather Alerts Section -->
+            <section id="weatherInfo" class="bg-white shadow-md p-4 rounded-lg">
+                <h2 class="text-lg font-bold text-orange-600">Weather Alerts</h2>
+                <div id="weatherAlertDetails" class="mt-4 text-gray-700">
+                    <!-- Dynamic weather alerts will load here -->
+                </div>
+            </section>
+
+            <!-- Flood Alerts -->
+            <section id="floodAlerts" class="bg-white shadow-md p-4 rounded-lg">
+                <h2 class="text-lg font-bold text-red-600">Flood Alerts</h2>
+                <div class="mt-4 text-gray-700" id="floodDetails">
+                    <!-- Flood alerts will load here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-green-700 text-white text-center py-4">
+        <p>&copy; 2024 Kishan App. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/javascript/script.js"></script>
+</body>
+
+</html>
