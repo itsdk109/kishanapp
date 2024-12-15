@@ -262,18 +262,23 @@ document.getElementById('stateSelect').addEventListener('change', function(event
 // Initial load (for example, showing weather data for 'Bihar')
 updateWeatherDataForState('Bihar');  // You can replace 'Bihar' with any default location
 
-// Sample Data for Alerts
+ // Predefined list of flood-prone regions with lat/lon bounds
+ const floodProneRegions = [
+    { name: "Kosi River Basin (Bihar)", latMin: 25.5, latMax: 27.5, lonMin: 84.5, lonMax: 87.0 },
+    { name: "Brahmaputra River Basin (Assam)", latMin: 26.0, latMax: 27.5, lonMin: 91.0, lonMax: 94.0 },
+    { name: "Sundarbans (West Bengal)", latMin: 21.5, latMax: 22.5, lonMin: 88.0, lonMax: 89.0 },
+    { name: "Mahanadi River Basin (Odisha)", latMin: 19.5, latMax: 21.0, lonMin: 83.0, lonMax: 85.0 },
+    { name: "Mumbai Metropolitan Region", latMin: 18.5, latMax: 19.5, lonMin: 72.5, lonMax: 73.5 },
+    { name: "Godavari Basin (Andhra Pradesh)", latMin: 16.5, latMax: 17.5, lonMin: 81.0, lonMax: 82.0 },
+];
+
+// Sample Data for Weather Alerts
 const alertData = {
     weatherAlerts: [
         "Heavy rain expected in the next 24 hours.",
         "Strong winds advisory in effect.",
         "Severe thunderstorms possible in the region.",
     ],
-    floodAlerts: [
-        "Flood warnings issued in nearby areas.",
-        "Potential river overflow in the region.",
-        "Flooding expected in low-lying areas due to continuous rain.",
-    ]
 };
 
 // Function to populate weather alerts
@@ -283,16 +288,63 @@ function loadWeatherAlerts() {
     weatherAlertDetails.innerHTML = alertData.weatherAlerts.map(alert => `<p>${alert}</p>`).join('');
 }
 
-// Function to populate flood alerts
-function loadFloodAlerts() {
-    const floodDetails = document.getElementById('floodDetails');
-    // Dynamically load flood alerts
-    floodDetails.innerHTML = alertData.floodAlerts.map(alert => `<p>${alert}</p>`).join('');
+// Function to detect user location
+function getUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        document.getElementById("userLocation").innerText = "Geolocation is not supported by this browser.";
+    }
 }
 
-// Call the functions to load the alerts
-window.onload = function() {
-    loadWeatherAlerts();
-    loadFloodAlerts();
-};
+// Function to check if user's location falls within any flood-prone region
+function checkFloodRisk(lat, lon) {
+    const floodAlerts = floodProneRegions.filter(region => 
+        lat >= region.latMin && lat <= region.latMax &&
+        lon >= region.lonMin && lon <= region.lonMax
+    );
 
+    if (floodAlerts.length > 0) {
+        return floodAlerts.map(region => `Flood Risk Detected in: ${region.name}`).join("<br>");
+    } else {
+        return "You are not in a flood-prone region currently.";
+    }
+}
+
+// Callback function when location is successfully fetched
+function showPosition(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    document.getElementById("userLocation").innerHTML = 
+        `Your location: Latitude ${lat.toFixed(2)}, Longitude ${lon.toFixed(2)}`;
+
+    // Check flood risk for the user's location
+    const floodAlertMessage = checkFloodRisk(lat, lon);
+    document.getElementById("floodDetails").innerHTML = floodAlertMessage;
+}
+
+// Error handling for location detection
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            document.getElementById("userLocation").innerText = "User denied the request for Geolocation.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            document.getElementById("userLocation").innerText = "Location information is unavailable.";
+            break;
+        case error.TIMEOUT:
+            document.getElementById("userLocation").innerText = "The request to get user location timed out.";
+            break;
+        case error.UNKNOWN_ERROR:
+            document.getElementById("userLocation").innerText = "An unknown error occurred.";
+            break;
+    }
+    document.getElementById("floodDetails").innerText = "Unable to load flood alerts.";
+}
+
+// Automatically get user location and load alerts on page load
+window.onload = function () {
+    loadWeatherAlerts(); // Load weather alerts
+    getUserLocation();  // Get user location for flood alerts
+};
